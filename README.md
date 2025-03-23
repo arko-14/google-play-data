@@ -53,5 +53,92 @@ The main objectives of this project are:
      ```
    - The Gemini output is considered the final output.
 
-## Project Structure
+## Installation
 
+1. **Clone the Repository:**
+    
+    ```bash
+    git clone <https://github.com/arko-14/google-play-data.git>
+    cd google-play-data
+    
+    ```
+    
+
+Create a Virtual Environment (Optional):
+
+bash
+Copy
+Edit
+python -m venv venv
+source venv/bin/activate   # For Linux/Mac
+venv\Scripts\activate      # For Windows
+Install Dependencies:
+
+bash
+Copy
+Edit
+pip install -r requirements.txt
+Example requirements.txt:
+
+plaintext
+Copy
+Edit
+streamlit==1.24.1
+tensorflow==2.12.0
+numpy==1.23.5
+pandas==1.5.3
+requests==2.31.0
+scikit-learn==1.2.2
+Data Preprocessing and Feature Engineering
+Data Cleaning & EDA:
+Refer to notebooks/EDA.ipynb for exploratory analysis, cleaning of columns (e.g., converting "Installs" and "Maximum Installs" to numeric), and visualization.
+
+Feature Engineering:
+Use notebooks/feature_engineering.ipynb to:
+
+Encode columns such as "Editors Choice" (0/1) and "Developer ID".
+
+Generate a rule-based target (final_label), where 0 = genuine and 1 = fraud.
+
+Retain "App Name" and "Category" for reference (but exclude them from the training feature set).
+
+Supervised ANN Model Training
+The notebook notebooks/supervised_ann.ipynb trains the ANN model using the features:
+
+Rating, Rating Count, Installs, Maximum Installs, and Editor Choice
+
+(Optionally: DeveloperID_encoded and Category_encoded)
+
+The model is built with TensorFlow/Keras and evaluated using cross-validation.
+
+The final trained model is saved as ann_model.h5.
+
+Streamlit Web Application
+The [app.py](http://app.py/) file is an interactive web application built with Streamlit. It performs the following:
+
+Model Loading:
+Loads the pre-trained ANN model from ann_model.h5.
+
+User Inputs:
+Provides input fields for:
+
+App Name: For cross-verification with the Gemini API.
+
+Rating, Rating Count, Installs, Maximum Installs, Editor Choice:
+These five numeric features are used by the ANN for preliminary prediction.
+
+ANN Prediction:
+The model outputs a preliminary classification:
+
+Uses a threshold of 0.5 (with a near-threshold range designated as "suspected").
+
+Gemini API Integration:
+The app constructs a prompt with all details (including App Name) and sends it to the Gemini API.
+The Gemini API returns a final output in JSON format:
+
+json
+Copy
+Edit
+{ "type": "fraud"|"genuine"|"suspected", "reason": "Concise explanation (300 char max)" }
+Display Output:
+The final JSON output from Gemini is displayed in the app.
