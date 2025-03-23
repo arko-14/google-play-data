@@ -114,4 +114,22 @@ The Gemini API returns a final output in JSON format:
 Display Output:
 The final JSON output from Gemini is displayed in the app.
 
+## Deployment
+## Local Deployment
+Place ann_model.h5, app.py, and requirements.txt in your project folder.
 
+Install the dependencies:
+
+
+pip install -r requirements.txt
+Run the Streamlit app:
+
+streamlit run app.py
+The app will open in your default browser at http://localhost:8501.
+
+## Cloud Deployment
+## Streamlit Cloud:
+Push your repository to GitHub and deploy it using Streamlit Cloud.
+
+## Other Platforms:
+You can deploy on Heroku, AWS, or similar platforms. Ensure that your requirements.txt is included and that you secure your API keys using environment variables.
