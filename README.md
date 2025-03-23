@@ -48,5 +48,20 @@ This project aims to detect fraudulent Google Play apps by combining:
    ```bash
    git clone https://github.com/arko-14/google-play-data.git
    cd google-play-data
+2. **Create a Virtual Environment (Optional but Recommended):**
+
+python -m venv venv
+source venv/bin/activate   # For Linux/Mac
+venv\Scripts\activate      # For Windows
+Install Dependencies:
+pip install -r requirements.txt
+
+## requirements.txt:
+streamlit
+tensorflow
+numpy
+pandas
+requests
+
 
 
