@@ -41,6 +41,12 @@ This project aims to detect fraudulent Google Play apps by combining:
    - The ANN model produces a preliminary classification (fraud, genuine, or suspected) based on a threshold.
    - All input details (including App Name) are sent to the Gemini API, which returns a concise explanation in a JSON format as specified.
 
-## Project Structure
+## Installation
+
+1. **Clone the Repository:**
+
+   ```bash
+   git clone https://github.com/arko-14/google-play-data.git
+   cd google-play-data
 
 
