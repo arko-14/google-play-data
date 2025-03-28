@@ -1,4 +1,4 @@
-# Google Play Fraud Detection & Explanation
+# Google Play Fraud Detector
 
 This repository provides an end-to-end solution for detecting fraudulent apps on the Google Play Store. The project combines data preprocessing, rule-based labeling, and a supervised Artificial Neural Network (ANN) for classification. Additionally, it integrates with the Gemini API to generate natural language explanations, delivering the final output in a strict JSON format.
 
